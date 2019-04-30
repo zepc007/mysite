@@ -8,13 +8,15 @@
 <body>
 <div>
     {#    <img src="{{ url_for('video_feed2') }}" alt="">#}
-{#        <img src="{% url 'video' %}" alt="">#}
+        <img src="" alt="" id="video">
     {#    <img src="{% url 'video1' %}" alt="">#}
 </div>
 {#    <textarea id="chat-log" cols="100" rows="20"></textarea><br/>#}
     <input id="chat-message-input" type="text" size="100"/><br/>
     <input id="chat-message-submit" type="button" value="Send"/>
     <div id='main' style='width:600px;height:400px;'></div>
+<input type="button" value="点我播放视频" id="btn1">
+<input type="button" value="点我停止视频" id="btn2">
 </body>
 <!-- 引入ECharts文件 -->
 <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts-en.common.js"></script>
@@ -86,5 +88,15 @@
 
         messageInputDom.value = '';
     };
+    $('#btn1').click(function () {
+        $('#video').attr('src', 'video');
+        chatSocket.send(JSON.stringify({
+            'message': 'ready'
+        }))
+    });
+    $('#btn2').click(function () {
+
+    })
 </script>
+
 </html>
